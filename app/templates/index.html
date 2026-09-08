@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactical Audio Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- LEFT COLUMN: RAW INPUTS -->
+        <div class="col left-col">
+            <div class="canvas-container">
+                <h3>MIC 1 [VOICE] - XLR</h3>
+                <canvas id="canvas-mic1"></canvas>
+            </div>
+            <div class="canvas-container">
+                <h3>MIC 2 [NOISE] - 1/4" INST</h3>
+                <canvas id="canvas-mic2"></canvas>
+            </div>
+        </div>
+
+        <!-- CENTER COLUMN: CONTROL -->
+        <div class="col center-col">
+            <button id="toggle-btn" class="btn-on">AI DENOISER: ON</button>
+        </div>
+
+        <!-- RIGHT COLUMN: PROCESSED OUTPUT -->
+        <div class="col right-col">
+            <div class="canvas-container large-canvas">
+                <h3>CLEAN OUTPUT [MONITOR]</h3>
+                <canvas id="canvas-out"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

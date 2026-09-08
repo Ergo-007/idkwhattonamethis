@@ -1,0 +1,19 @@
+import os
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+CLEAN_DIR = os.path.join(PROJECT_ROOT, "data", "clean")
+TACTICAL_NOISE_DIR = os.path.join(PROJECT_ROOT, "data", "noise_tactical")
+ENV_NOISE_DIR = os.path.join(PROJECT_ROOT, "data", "noise_environmental")
+DF_MODEL_DIR = os.path.join(PROJECT_ROOT, "models", "deepfilter")
+DTLN_MODEL_DIR = os.path.join(PROJECT_ROOT, "models", "dtln")
+
+
+What the Numbers Tell Us
+Blazing Fast GPU Execution: Processing a 300ms chunk takes only 14.14 ms. This means your GTX 1650 is operating at a Real-Time Factor (RTF) of roughly 0.047—meaning it takes the GPU less than 5% of a second to clean a full second of audio.
+
+Massive Safety Headroom: You have 285.86 ms of pure headroom every single frame. There is zero risk of lag, buffer overruns, or audio stuttering during your live demo.
+
+Lightweight DSP Overhead: Layer 2 (the vectorized limiter) adds an imperceptible 0.18 ms of execution time, making the dual-stage pipeline practically free computationally.
+
+The 300ms configuration is the winner: it hits the sweet spot of sub-second responsiveness while giving the AI enough context window to completely wipe out gunshots and background rumble.

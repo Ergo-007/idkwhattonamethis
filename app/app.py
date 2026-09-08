@@ -6,7 +6,6 @@ from collections import deque
 from flask import Flask, jsonify, request, render_template
 from df.enhance import init_df, enhance
 
-# --- CONFIGURATION ---
 SAMPLE_RATE = 48000
 CHUNK_MS = 300
 OVERLAP_MS = 10
@@ -19,31 +18,28 @@ STEP_SAMPLES = int(SAMPLE_RATE * (STEP_MS / 1000.0))
 print("Loading Tactical AI Weights...")
 model, df_state, _ = init_df()
 
-# Fix: Keep crossfade tensors on the CPU (Matches Jupyter Notebook exactly)
 fade_out = torch.linspace(1.0, 0.0, OVERLAP_SAMPLES)
 fade_in = torch.linspace(0.0, 1.0, OVERLAP_SAMPLES)
 prev_overlap = torch.zeros(1, OVERLAP_SAMPLES)
 
-# --- ROLLING BUFFERS ---
-MAX_BUFFER = SAMPLE_RATE * 1  # 1 second of audio memory
+
+MAX_BUFFER = SAMPLE_RATE * 1  
 buffer_mic1 = deque([0.0]*MAX_BUFFER, maxlen=MAX_BUFFER)
 buffer_mic2 = deque([0.0]*MAX_BUFFER, maxlen=MAX_BUFFER)
 buffer_out = deque([0.0]*MAX_BUFFER, maxlen=MAX_BUFFER)
 
 app_state = {"denoise_enabled": True}
 
-# --- AUDIO CALLBACK ---
 def audio_callback(indata, outdata, frames, time_info, status):
     global prev_overlap
     
-    mic1_raw = indata[:, 0]  # XLR Mic
-    mic2_raw = indata[:, 1]  # 1/4" Mic
+    mic1_raw = indata[:, 0]  
+    mic2_raw = indata[:, 1]  
     
     buffer_mic1.extend(mic1_raw.tolist())
     buffer_mic2.extend(mic2_raw.tolist())
 
     if app_state["denoise_enabled"]:
-        # Fix: Keep incoming tensor on CPU. DeepFilterNet handles GPU transfers internally.
         incoming_tensor = torch.from_numpy(mic1_raw).float().unsqueeze(0)
         full_chunk = torch.cat([prev_overlap, incoming_tensor], dim=-1)
         
@@ -56,7 +52,6 @@ def audio_callback(indata, outdata, frames, time_info, status):
         
         prev_overlap = cleaned[:, -OVERLAP_SAMPLES:].clone()
         
-        # Fix: Removed .cpu() since it never left the CPU
         out_audio = cleaned[:, :STEP_SAMPLES].squeeze(0).numpy()
     else:
         out_audio = mic1_raw.copy()
@@ -66,7 +61,6 @@ def audio_callback(indata, outdata, frames, time_info, status):
     outdata[:, 1] = out_audio
     buffer_out.extend(out_audio.tolist())
 
-# --- FLASK SERVER ---
 app = Flask(__name__)
 
 @app.route("/")

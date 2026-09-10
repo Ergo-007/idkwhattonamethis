@@ -14,59 +14,69 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            background: #0d1116;
-            color: #e8edf2;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0f14;
+            color: #ffffff;
             line-height: 1.6;
         }
 
         /* HEADER */
         header {
-            min-height: 260px;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            text-align: left;
-            padding: 55px max(25px, calc((100% - 1050px) / 2));
-            background: #11171e;
-            border-bottom: 1px solid #26313b;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #101820, #17232d);
+            border-bottom: 2px solid #263746;
         }
 
-        header h3 {
-            font-size: 3.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            font-weight: 700;
+        header h1 {
+            font-size: 4.5rem;
+            letter-spacing: 12px;
+            margin-bottom: 15px;
+            font-weight: 800;
         }
 
         header p {
-            color: #9ca9b5;
-            font-size: 1.05rem;
-            max-width: 700px;
+            color: #aebdca;
+            font-size: 1.15rem;
+            max-width: 900px;
         }
 
         /* GENERAL SECTION */
         section {
-            max-width: 1050px;
-            margin: 55px auto;
+            max-width: 1150px;
+            margin: 60px auto;
             padding: 0 25px;
         }
 
-        .section-title,
-        section > h3 {
-            font-size: 1.65rem;
-            font-weight: 600;
-            margin-bottom: 22px;
-            padding-bottom: 9px;
-            border-bottom: 1px solid #2a3540;
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-left: 5px solid #35d07f;
+            padding-left: 15px;
+        }
+
+        /* PROBLEM STATEMENT */
+        .problem-box {
+            background: #111820;
+            border: 1px solid #263746;
+            border-radius: 14px;
+            padding: 30px;
+            font-size: 1.15rem;
+            color: #d6e0e7;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
         /* BOM TABLE */
         .table-container {
             overflow-x: auto;
-            background: #11171e;
-            border: 1px solid #26313b;
+            background: #111820;
+            border-radius: 14px;
+            border: 1px solid #263746;
         }
 
         table {
@@ -75,48 +85,78 @@
         }
 
         th {
-            background: #182029;
-            padding: 14px 16px;
+            background: #1b2935;
+            padding: 17px;
             text-align: left;
-            font-size: 0.92rem;
-            font-weight: 600;
-            color: #cbd5de;
+            font-size: 1rem;
         }
 
         td {
-            padding: 15px 16px;
-            border-top: 1px solid #26313b;
-            color: #c2ccd5;
+            padding: 17px;
+            border-top: 1px solid #263746;
+            color: #d5dfe7;
         }
 
         tr:hover {
-            background: #151d25;
+            background: #151f28;
         }
 
         .cost {
             white-space: nowrap;
-            font-weight: 600;
-            color: #e2e8ed;
+            font-weight: bold;
+        }
+
+        .bom-table {
+            font-size: 0.78rem;
+        }
+
+        .bom-table th,
+        .bom-table td {
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .bom-table th:nth-child(1) { width: 17%; }
+        .bom-table th:nth-child(2) { width: 25%; }
+        .bom-table th:nth-child(3) { width: 8%; }
+        .bom-table th:nth-child(4) { width: 35%; }
+        .bom-table th:nth-child(5) { width: 15%; }
+
+        .bom-table td:nth-child(3),
+        .bom-table td:nth-child(5) {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 700px) {
+            .bom-table {
+                font-size: 0.7rem;
+            }
+
+            .bom-table th,
+            .bom-table td {
+                padding: 7px;
+            }
         }
 
         /* TOTAL */
         .total-box {
-            margin-top: 18px;
+            margin-top: 25px;
             display: flex;
             justify-content: flex-end;
         }
 
         .total {
-            background: transparent;
-            color: #b8c5cf;
-            padding: 0;
-            font-size: 1rem;
-            font-weight: 600;
+            background: #35d07f;
+            color: #07110b;
+            padding: 18px 30px;
+            border-radius: 10px;
+            font-size: 1.4rem;
+            font-weight: bold;
         }
 
         /* VIDEO */
         .video-section {
-            text-align: left;
+            text-align: center;
         }
 
         .video-container {
@@ -125,9 +165,11 @@
             max-width: 900px;
             margin: 0 auto;
             aspect-ratio: 16 / 9;
+            border-radius: 15px;
             overflow: hidden;
-            border: 1px solid #26313b;
-            background: #11171e;
+            border: 1px solid #263746;
+            background: #111820;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         .video-container iframe {
@@ -138,83 +180,67 @@
 
         /* GITHUB */
         .github-section {
-            text-align: left;
-            padding-bottom: 55px;
+            text-align: center;
+            padding-bottom: 70px;
         }
 
         .github-box {
-            background: #11171e;
-            border: 1px solid #26313b;
-            padding: 30px;
+            background: #111820;
+            border: 1px solid #263746;
+            border-radius: 15px;
+            padding: 35px;
             max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
+            margin: auto;
         }
 
-        .github-box img {
-            display: block;
-            width: 180px;
-            height: 180px;
-            margin: 22px auto;
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
         }
 
         .github-box p {
-            color: #9ca9b5;
+            color: #aebdca;
             margin-bottom: 10px;
         }
 
         .github-link {
-            color: #63c894;
+            color: #35d07f;
             word-break: break-all;
             text-decoration: none;
-        }
-
-        .github-link:hover {
-            text-decoration: underline;
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 22px 25px;
-            border-top: 1px solid #26313b;
-            color: #697681;
-            background: #0a0e13;
-            font-size: 0.9rem;
+            padding: 25px;
+            border-top: 1px solid #263746;
+            color: #71808c;
+            background: #080c10;
         }
 
         /* MOBILE */
         @media (max-width: 700px) {
-            header {
-                min-height: 210px;
-                padding: 45px 22px;
-            }
 
-            header h3 {
-                font-size: 2.6rem;
-                letter-spacing: 4px;
+            header h1 {
+                font-size: 3rem;
+                letter-spacing: 7px;
             }
 
             header p {
-                font-size: 0.98rem;
+                font-size: 1rem;
             }
 
             section {
-                margin: 42px auto;
-                padding: 0 20px;
+                margin: 40px auto;
             }
 
-            .section-title,
-            section > h3 {
-                font-size: 1.4rem;
+            .problem-box {
+                font-size: 1rem;
             }
 
             .total-box {
-                justify-content: flex-start;
-            }
-
-            .github-box {
-                padding: 24px;
+                justify-content: center;
             }
         }
     </style>
@@ -237,51 +263,93 @@
     <!-- BILL OF MATERIALS -->
     <section>
 
-        <h3 >
+        <h3>
             Bill of Materials (BOM)
         </h3>
 
         <div class="table-container">
 
-            <table>
+            <table class="bom-table">
 
                 <thead>
                     <tr>
-                        <th>SI No.</th>
-                        <th>Material / Component</th>
-                        
-                        <th>Estimated Cost (₹)</th>
+                        <th>CATEGORY</th>
+                        <th>COMPONENT &amp; SPECIFICATION</th>
+                        <th>QTY</th>
+                        <th>TECHNICAL JUSTIFICATION</th>
+                        <th>EST. COST (₹)</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
                     <tr>
+                        <td>CENTRAL PROCESSING UNIT</td>
+                        <td>EMBEDDED EDGE AI COMPUTE<br>NVIDIA JETSON ORIN NANO (8GB) / HIGH-END GPU</td>
                         <td>1</td>
-                        <td>Dataset</td>
-                        
-                        <td class="cost">₹8,000</td>
+                        <td>RUNS REAL-TIME MULTI-CHANNEL DEEPFILTERNET3 INFERENCE AND AUDIO CROSS-ROUTING.</td>
+                        <td class="cost">₹24,000</td>
                     </tr>
 
                     <tr>
+                        <td>OPERATOR ENDPOINT NODES</td>
+                        <td>EMBEDDED AUDIO TRANSCEIVERS</td>
                         <td>2</td>
-                        <td>Positioning Server</td>
-                        
+                        <td>CAPTURES MICROPHONE INPUT, ENCODES AUDIO TO OPUS, AND TRANSMITS UDP PACKETS.</td>
+                        <td class="cost">₹4,500</td>
+                    </tr>
+
+                    <tr>
+                        <td>P2P DATA-LINK HARDWARE</td>
+                        <td>LOW-LATENCY 2.4GHZ / 5.8GHZ TRANSCEIVER MODULES</td>
+                        <td>1 SET</td>
+                        <td>DELIVERS DETERMINISTIC SUB-10MS PACKET DELIVERY WITHOUT PUBLIC ROUTER.</td>
+                        <td class="cost">₹3,500</td>
+                    </tr>
+
+                    <tr>
+                        <td>AUDIO FRONT-END &amp; CODECS</td>
+                        <td>24-BIT LOW-POWER AUDIO CODECS (I2S/USB)<br>LOW-LATENCY ADC/DAC PRE-AMPS WITH HARDWARE GAIN STAGES.</td>
+                        <td>2</td>
+                        <td>DIGITIZES VOICE AT 48 KHZ STUDIO RESOLUTION WITH HARDWARE GAIN STAGES.</td>
+                        <td class="cost">₹4,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>TRANSDUCERS &amp; HEADSETS</td>
+                        <td>TACTICAL DYNAMIC BOOM MICS &amp; SEALED HEADSETS</td>
+                        <td>2 SETS</td>
+                        <td>PREVENTS ACOUSTIC FEEDBACK AND ANALOG DISTORTION DURING LOUD IMPULSES.</td>
                         <td class="cost">₹5,000</td>
                     </tr>
 
                     <tr>
-                        <td>3</td>
-                        <td>Li-Po Battery</td>
-                        
-                        <td class="cost">₹1,500</td>
+                        <td>POWER INFRASTRUCTURE</td>
+                        <td>3S 11.1V 2200–3300 MAH LI-PO BATTERIES + BMS + BUCK REGULATORS</td>
+                        <td>1 SET</td>
+                        <td>ISOLATES POWER SPIKES, SUPPLIES RIPPLE-FREE DC CURRENT, AND ENABLES UNTETHERED OPERATION.</td>
+                        <td class="cost">₹4,500</td>
                     </tr>
 
                     <tr>
-                        <td>4</td>
-                        <td>Miscellaneous</td>
-                        
-                        <td class="cost">₹1,500</td>
+                        <td>DATASET &amp; AUGMENTATION</td>
+                        <td>TACTICAL NOISE DATASET LICENSING &amp; COMPUTE</td>
+                        <td>1</td>
+                        <td>MODEL FINE-TUNING AND VALIDATION AGAINST COMBAT ACOUSTIC PROFILES.</td>
+                        <td class="cost">₹5,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>RUGGEDIZATION &amp; CABLING</td>
+                        <td>SHIELDED CABLES, FERRITE CORES, ENCLOSURE EMI-SHIELDED WIRING, MECHANICAL SWITCHES</td>
+                        <td>1 SET</td>
+                        <td>SUPPRESSES ELECTROMAGNETIC INTERFERENCE (EMI) GENERATED BY SWITCHING BUCK REGULATORS.</td>
+                        <td class="cost">₹2,500</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4"><strong>TOTAL PROJECT BUDGET</strong></td>
+                        <td class="cost"><strong>₹53,000</strong></td>
                     </tr>
 
                 </tbody>
@@ -290,29 +358,28 @@
 
         </div>
 
-        <div class="total-box">
-            <div class="total">
-                <p>Total Estimated Cost: ₹16,000</p>
-            </div>
-        </div>
-
     </section>
-
 
     <!-- YOUTUBE VIDEO -->
     <section class="video-section">
 
         <h2 class="section-title">
-            Reference Video
+            Project Demonstration
         </h2>
 
         <div class="video-container">
-            <iframe
-                src="https://www.youtube.com/embed/F8lue6wZgdc"
-                title="Reference Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+           <!--
+                REPLACE VIDEO_ID WITH YOUR ACTUAL YOUTUBE VIDEO ID.
+
+                Example:
+                https://www.youtube.com/watch?v=ABC123
+
+                becomes:
+                https://www.youtube.com/embed/ABC123
+            -->
+
+           
+
         </div>
 
     </section>
@@ -331,11 +398,7 @@
                 Scan the QR code to access the RESONX GitHub repository.
             </p>
 
-            <img
-                src="git-qr.png"
-                alt="QR code to access the RESONX GitHub repository"
-                width="180"
-                height="180">
+            <div id="qrcode"></div>
 
             <a
                 class="github-link"
@@ -357,6 +420,18 @@
     </footer>
 
 
+    <!-- QR CODE LIBRARY -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <script>
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://github.com/shakhyar/idkwhattonamethis",
+            width: 180,
+            height: 180
+        });
+
+    </script>
 
 </body>
 </html>
